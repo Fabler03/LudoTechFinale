@@ -120,7 +120,7 @@ class GameController {
   static async approveGame(req, res) {
     try {
       const id = req.params.id;
-      const approvedby = req.session.user.username;
+      const approvedby = req.session.user.id;
 
       const game = await GameService.approveGame(id, approvedby);
 

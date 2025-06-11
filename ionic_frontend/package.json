@@ -1,7 +1,7 @@
 {
-  "name": "progetto_app",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "name": "ludotech",
+  "version": "1.0.0",
+  "author": "palma",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",

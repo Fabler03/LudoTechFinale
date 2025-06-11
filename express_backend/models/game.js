@@ -71,13 +71,11 @@ class Game {
       db.all(
         `SELECT 
             scores.id, 
-            games.name AS gamename,
             users.username,
             users.avatar,
             scores.score,
             scores.created_at 
         FROM scores 
-        JOIN games ON scores.game_id = games.id 
         JOIN users ON scores.user_id = users.id 
         WHERE scores.game_id = ?
         ORDER BY scores.score DESC

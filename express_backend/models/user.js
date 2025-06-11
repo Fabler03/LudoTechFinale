@@ -9,10 +9,11 @@ const bcrypt = require('bcryptjs');
 class User {
   
   // creazione di un nuovo utente
-  static async create({ username, email, password, role = 'user' }) {
+  static async create({ username, email, password}) {
     // genSalt genera un seed casuale per l'hashing della password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    const role = 'user'; // ruolo predefinito per i nuovi utenti
     
     return new Promise((resolve, reject) => {
       db.run(

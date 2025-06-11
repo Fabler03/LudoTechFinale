@@ -2,10 +2,10 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// Configure storage
+// Configura lo storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // Use a temporary folder for uploads
+    // Usa una cartella temporanea per i caricamenti
     const tempPath = path.join(__dirname, '../uploads/temp_files');
     fs.mkdirSync(tempPath, { recursive: true });
     cb(null, tempPath);
@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   }
 });
 
-// Configure multer
+// Configura multer per gestire i file caricati
 const upload = multer({ storage }).fields([
   { name: "html", maxCount: 1 },
   { name: "css", maxCount: 1 },
@@ -23,7 +23,7 @@ const upload = multer({ storage }).fields([
   { name: "icon", maxCount: 1 }
 ]);
 
-// Middleware to handle file uploads
+// Middleware to gestire i file caricati
 const uploadMiddleware = (req, res, next) => {
   upload(req, res, (err) => {
     if (err) {

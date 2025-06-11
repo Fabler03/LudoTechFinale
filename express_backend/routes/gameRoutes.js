@@ -9,10 +9,10 @@ const { uploadValidator, validate } = require('../validators/gameValidators.js')
 router.post(
   "/upload",
   isAuthenticated,
-  uploadMiddleware, // Handle file uploads
-  uploadValidator,  // Validate the request
-  validate,         // Check for validation errors
-  GameController.uploadGame // Process the upload
+  uploadMiddleware, // gestisci upload
+  uploadValidator,  // Valida la richiesta
+  validate,         // Controlla gli errori di validazione
+  GameController.uploadGame // Elabora l'upload
 );
 
 router.get('/download/:id', isAdmin, GameController.downloadGame);

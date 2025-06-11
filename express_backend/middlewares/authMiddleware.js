@@ -13,28 +13,7 @@ function isAdmin(req, res, next) {
   return res.status(403).json({ message: 'Accesso riservato agli admin' });
 }
 
-// da implementare
-function checkStaticAccess(req, res, next) {
-  const origin = req.get('Origin') || '';
-  const referer = req.get('Referer') || '';
-
-  const allowedOrigin = 'http://localhost:4200';
-
-  const fromFrontend = origin.startsWith(allowedOrigin) || referer.startsWith(allowedOrigin);
-
-  if (fromFrontend) {
-    // Aggiungi header CORS
-    res.header('Access-Control-Allow-Origin', allowedOrigin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-    return next();
-  }
-
-  return res.status(403).send('Accesso non autorizzato ai file statici');
-}
-
-
 module.exports = { 
     isAuthenticated,
     isAdmin,
-    checkStaticAccess
 };

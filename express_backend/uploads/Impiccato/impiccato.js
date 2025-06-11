@@ -23,7 +23,6 @@ let chosenWord = "";
 let mistakes = 0;
 let maxMistakes = 6;
 
-// Initialize Game
 const initializeGame = () => {
     optionsContainer.innerHTML = "";
     letterContainer.innerHTML = "";
@@ -32,10 +31,8 @@ const initializeGame = () => {
     newGameContainer.classList.add("hide");
     mistakes = 0;
 
-    // Draw initial canvas
     drawCanvas();
 
-    // Create category buttons
     for (let category in options) {
         const button = document.createElement("button");
         button.innerText = category;
@@ -44,9 +41,7 @@ const initializeGame = () => {
     }
 };
 
-// Start Game
 const startGame = (category) => {
-    // Disabilita tutti i pulsanti delle categorie
     const categoryButtons = document.querySelectorAll("#options-container button");
     categoryButtons.forEach((button) => {
         button.disabled = true;
@@ -65,7 +60,7 @@ const startGame = (category) => {
         .map(() => "_")
         .join(" ");
 
-    // Layout alfabetico e responsivo
+    // Layout alfabetico
     letterContainer.innerHTML = ""; // Pulisce eventuali lettere precedenti
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const gridDiv = document.createElement("div");
@@ -79,7 +74,6 @@ const startGame = (category) => {
     letterContainer.appendChild(gridDiv);
 };
 
-// Handle Guess
 const handleGuess = (button) => {
     const letter = button.innerText;
     button.disabled = true;
@@ -95,6 +89,11 @@ const handleGuess = (button) => {
 
         if (!wordArray.includes("_")) {
             resultText.innerHTML = `<h2 class="win-msg">Hai vinto!</h2>`;
+            const buttons = letterContainer.getElementsByTagName('button');
+            Array.from(buttons).forEach(btn => {
+                btn.disabled = true;
+                btn.style.backgroundColor = '#cccccc';
+            });
             newGameContainer.classList.remove("hide");
         }
     } else {
@@ -108,7 +107,6 @@ const handleGuess = (button) => {
     }
 };
 
-// Draw Canvas
 const drawCanvas = () => {
     context.clearRect(0, 0, canvas.width, canvas.height); // Pulisce il canvas
     context.lineWidth = 2;
@@ -139,7 +137,6 @@ const drawCanvas = () => {
     context.stroke();
 };
 
-// Draw Hangman
 const drawHangman = (mistakes) => {
     switch (mistakes) {
         case 1: // Testa

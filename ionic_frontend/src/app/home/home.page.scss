@@ -1,12 +1,15 @@
 ion-content {
-  --background: #122a4a;
+  --background: var(--ion-color-light);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
   
 ion-card {
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 
 ion-menu {
   --width: 200px;
@@ -16,32 +19,17 @@ ion-title:hover {
   cursor: pointer;
 }
 
-
-// ::part per modificare gli stili interni.
 ion-item::part(native) {
-    background: rgb(49, 51, 84);
-    color: white;
+    background: var(--ion-color-secondary);
+    color: var(--ion-color-light);
     
     &:hover {
-      background: rgb(117, 122, 191);
+      background: var(--ion-color-secondary-tint);
     }
-  }
+}
 
 .title-icon {
   height: 40px;
   width: auto;
   vertical-align: middle;
-}
-
-.custom_style{
-  background-color: violet;
-  color: white;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
-  
-  /* Effetto hover */
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: translateY(-3px);
-  }
 }

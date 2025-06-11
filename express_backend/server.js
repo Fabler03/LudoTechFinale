@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const authRoutes = require('./routes/authRoutes.js');
 const gameRoutes = require('./routes/gameRoutes.js');
-const { checkStaticAccess } = require('./middlewares/authMiddleware');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
@@ -10,7 +9,7 @@ require('dotenv').config();
 app.use(cookieParser());
 
 app.use(session({
-  secret: 'chiave_segretissima_ludotech_v1', // usa una variabile d'ambiente!
+  secret: 'chiave_segretissima_ludotech_v1',
   resave: false,
   saveUninitialized: false,
   cookie: {
