@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #8c52ff;
+}
+
+.container {
+    font-size: 16px;
+    background-color: #ffffff;
+    width: 90vw;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#options-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permette ai bottoni di andare a capo */
+    gap: 15px; /* Spaziatura tra i bottoni */
+    margin-bottom: 20px;
+}
+
+#letter-container {
+    display: flex;
+    flex-wrap: wrap; /* Permette ai bottoni di andare a capo */
+    justify-content: center; /* Centra i bottoni orizzontalmente */
+    gap: 8px; /* Spaziatura tra i bottoni */
+    margin-top: 20px;
+}
+
+#letter-container button {
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #6a3bcc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1 1 calc(10% - 8px); /* Bottoni flessibili con larghezza minima */
+    max-width: 50px; /* Larghezza massima per i bottoni */
+    text-align: center; /* Centra il testo nei bottoni */
+}
+
+#letter-container button:hover {
+    background-color: #8c52ff;
+    transform: translateY(-2px);
+}
+
+#letter-container button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Media query per schermi piccoli */
+@media (max-width: 600px) {
+    #letter-container button {
+        flex: 1 1 calc(20% - 8px); /* Bottoni più larghi su schermi piccoli */
+        max-width: 40px; /* Riduce la larghezza massima */
+        font-size: 0.9rem; /* Riduce la dimensione del testo */
+    }
+}
+
+#options-container button,
+#letter-container button {
+    padding: 12px 20px; /* Aumenta il padding per rendere i bottoni più grandi */
+    font-size: 1rem; /* Dimensione del testo */
+    font-weight: 600; /* Testo in grassetto */
+    background-color: #6a3bcc; /* Colore di sfondo in linea con il tema */
+    color: #fff; /* Colore del testo */
+    border: none; /* Rimuove il bordo */
+    border-radius: 8px; /* Angoli arrotondati */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    transition: all 0.3s ease; /* Aggiunge una transizione per gli effetti hover */
+    margin: 10px; /* Aggiunge spazio tra i bottoni */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Aggiunge un'ombra */
+}
+
+#options-container button:hover,
+#letter-container button:hover {
+    background-color: #8c52ff; /* Cambia il colore di sfondo al passaggio del mouse */
+    transform: translateY(-2px); /* Effetto di sollevamento */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata */
+}
+
+#options-container button:disabled,
+#letter-container button:disabled {
+    background-color: #ccc; /* Colore di sfondo per i bottoni disabilitati */
+    color: #666; /* Colore del testo per i bottoni disabilitati */
+    cursor: not-allowed; /* Cambia il cursore per i bottoni disabilitati */
+    box-shadow: none; /* Rimuove l'ombra */
+}
+
+/* Pulsante della categoria selezionata */
+#options-container button.selected {
+    background-color: #8c52ff; /* Colore per il pulsante selezionato */
+    color: #fff; /* Colore del testo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata */
+    transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+#user-input-section {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.new-game-popup {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#new-game-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #8c52ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#new-game-button:hover {
+    background-color: #6a3bcc;
+}
+
+.hide {
+    display: none;
+}
+
+/* Da aggiungere in impiccato.css */
+.letter-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.letter-grid button {
+    flex: 1 0 40px;
+    min-width: 40px;
+    max-width: 48px;
+    padding: 8px 0;
+    font-size: 1.1em;
+    margin: 2px;
+    box-sizing: border-box;
+}

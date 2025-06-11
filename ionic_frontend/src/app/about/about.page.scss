@@ -1,0 +1,51 @@
+/* filepath: /Users/gabrielepalma/Documents/uni/programmazione web e mobile/esercitazioni/LudoTech/ionic_frontend/src/app/about/about.page.scss */
+.about-content {
+  --padding-top: 16px;
+}
+
+/* Add a simple fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Styling for feature cards */
+.feature-card {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Founders section */
+.founders-card-header {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.founders-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.founder-col {
+  display: flex;
+}
+
+.founder-card {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.founder-card ion-img {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}

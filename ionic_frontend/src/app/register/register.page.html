@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Prima volta su LudoTech? Registrati!</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          type="submit"
+          [disabled]="!registerForm.form.valid"
+          class="ion-margin-top"
+        >
+          Registrati
+        </ion-button>
+
+      </form>
+
+      <ion-button fill="clear" routerLink="/login" class="ion-margin-top">
+        hai già un account? Accedi!
+      </ion-button>
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>

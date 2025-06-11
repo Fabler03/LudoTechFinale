@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Il mio account</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleEdit()">
+        {{ editMode ? 'applica modifiche' : 'modifica' }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card class="profile-card">
+    <ion-card-header>
+      <!-- avatar -->
+      <div class="profile-image-container">
+        <img [src]="'http://localhost:3000/uploads/avatars_/' + avatar" alt="Profile Picture" class="profile-image" />
+      </div>
+      <!-- Username display / input -->
+      <ion-card-title>
+        <ng-container *ngIf="!editMode; else editUsername">
+          {{ username }}
+        </ng-container>
+        <ng-template #editUsername>
+          <div class="edit-username">
+            <strong class="edit-label">Nome:</strong>
+            <ion-input [(ngModel)]="username" placeholder="Username" class="center-input"></ion-input>
+          </div>
+        </ng-template>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="info-item">
+        <strong>Email:</strong>
+        <span *ngIf="!editMode">{{ email }}</span>
+        <ion-input *ngIf="editMode" [(ngModel)]="email" placeholder="Email" style="color: rgb(255, 255, 255);"></ion-input>
+      </div>
+      <ion-button expand="full" color="danger" (click)="confirmLogout()">
+        Logout
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-container *ngIf="editMode">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cambia avatar</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="avatar-selector">
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let av of availableAvatars">
+              <img [src]="'http://localhost:3000/uploads/avatars_/' + av" alt="avatar" (click)="selectAvatar(av)" class="selectable-avatar" />
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

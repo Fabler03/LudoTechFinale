@@ -1,0 +1,131 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-segment name="selectedSegment" [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="iframe">
+        <ion-label>{{ game?.name }}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="info">
+        <ion-label>Info</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="leaderboard">
+        <ion-label>Leaderboard</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="isAdmin" value="admin">
+        <ion-label>Admin</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="game">
+
+  <!-- scheda iframe -->
+  <ng-container *ngIf="selectedSegment === 'iframe'">
+  <ion-card>
+    <div class="iframe-container">
+      <iframe [src]="iframeUrl" tabindex="0" frameborder="0">
+      </iframe>
+    </div>
+  </ion-card>
+  </ng-container>
+
+  <!-- scheda informazioni gioco -->
+  <ng-container *ngIf="selectedSegment === 'info'">
+    <ion-card>
+      <div class="game-icon-container">
+        <img [src]="'http://localhost:3000/uploads/' + game.name + '/' + game.icon" 
+            [alt]="game.name" 
+            class="game-icon">
+      </div>
+      <ion-card-header style="padding-top: 0px; font-size: 1.5em;">
+        <ion-card-title>{{ game.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h3>Descrizione del gioco</h3>
+        <div class="game-description">
+          <p>{{ game.description }}</p>
+        </div>
+
+        <!-- sezione autore -->
+        <div class="author-section">
+          <h3>Creato da</h3>
+          <div class="author-info">
+            <img [src]="'http://localhost:3000/uploads/avatars_/' + author?.avatar" 
+                [alt]="author?.username"
+                class="author-avatar">
+            <div class="author-details">
+              <h4>{{ author?.username }}</h4>
+              <p>{{ author?.email }}</p>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- scheda scoreboard -->
+  <ng-container *ngIf="selectedSegment === 'leaderboard'">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Top 10</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ng-container *ngIf="scores?.length === 0">
+          <p style="padding: 20px; text-align: center; font-size: 1.1em;">
+            Nessun punteggio disponibile.
+          </p>
+        </ng-container>
+        
+        <div class="scoreboard-container" *ngIf="scores && scores.length > 0">
+          <ion-grid fixed>
+            <ion-row class="scoreboard-header">
+              <ion-col size="6">Giocatore</ion-col>
+              <ion-col size="3">Punteggio</ion-col>
+              <ion-col size="3">Data</ion-col>
+            </ion-row>
+            
+            <ion-row *ngFor="let score of scores" class="score-row">
+              <ion-col size="6">
+                <div class="user-cell">
+                  <img [src]="'http://localhost:3000/uploads/avatars_/' + score.avatar" 
+                      [alt]="score.username" 
+                      class="avatar-small">
+                  <span>{{ score.username }}</span>
+                </div>
+              </ion-col>
+              <ion-col size="3">{{ score.score }}</ion-col>
+              <ion-col size="3">{{ score.created_at | date:'dd/MM/yyyy HH:mm:ss' }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <ion-button class="big-button" (click)="getScores()">
+          aggiorna punteggi
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- scheda azioni amministrative -->
+  <ng-container *ngIf="selectedSegment === 'admin'">
+  <ion-card *ngIf="isAdmin">
+    <ion-card-header>
+      <ion-card-title>Azioni amministrative</ion-card-title>
+    </ion-card-header>
+    <ion-button class="big-button" (click)="downloadGameFiles()">
+      SCARICA FILE
+    </ion-button>
+    <ion-button *ngIf="!game.approvedby" class="big-button" color="success" (click)="approveGame()">
+      APPROVA
+    </ion-button>
+    <ion-button class="big-button" color="danger" (click)="deleteGame()">
+      ELIMINA
+    </ion-button>
+  </ion-card>
+  </ng-container>
+
+</ion-content>
+
+<ion-content *ngIf="error">
+  <ion-text color="danger">{{ error }}</ion-text>
+</ion-content>

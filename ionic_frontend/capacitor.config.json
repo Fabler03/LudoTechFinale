@@ -1,0 +1,9 @@
+{
+  "android": {
+    "allowMixedContent": true
+  },
+  "appId": "com.example.LudoTech",
+  "appName": "LudoTech",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

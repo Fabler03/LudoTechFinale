@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title routerLink="/home/dashboard">
+      <img src="../../assets/icon/favicon.png" alt="LudoTech Logo" class="title-icon" />
+      LudoTech
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-split-pane [when]="splitPaneWhen" contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" style="width: auto;">
+      <ion-header>
+        <ion-toolbar color="gray">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item routerLink="/home/dashboard" routerDirection="root">Dashboard</ion-item>
+          <ion-item routerLink="/home/upload-game" routerDirection="root">Carica gioco</ion-item>
+          <ion-item routerLink="/home/about" routerDirection="root">Cos'è LudoTech</ion-item>
+          <ion-item routerLink="/home/user" routerDirection="root">Il mio account</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-content>
+
