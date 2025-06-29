@@ -15,7 +15,7 @@ router.post(
   GameController.uploadGame // Elabora l'upload
 );
 
-router.get('/download/:id', isAdmin, GameController.downloadGame);
+router.get('/download/:id', isAdmin, GameController.downloadGame); // download gioco per ID
 
 router.put('/approve/:id', isAdmin, GameController.approveGame); // Approva un gioco per ID
 

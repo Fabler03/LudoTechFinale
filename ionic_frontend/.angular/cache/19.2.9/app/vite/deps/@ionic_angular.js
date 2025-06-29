@@ -2,23 +2,6 @@ import {
   mdTransitionAnimation
 } from "./chunk-RHG7RFIU.js";
 import {
-  iosTransitionAnimation
-} from "./chunk-HV7BMKCE.js";
-import {
-  bootstrapLazy,
-  componentOnReady,
-  config,
-  configFromSession,
-  configFromURL,
-  createAnimation,
-  doc,
-  getIonPageElement,
-  getMode,
-  printIonWarning,
-  saveConfig,
-  setMode
-} from "./chunk-3J4LGGM5.js";
-import {
   AngularDelegate,
   Config,
   ConfigToken,
@@ -41,13 +24,7 @@ import {
   provideComponentInputBinding,
   raf,
   setIonicClasses
-} from "./chunk-HVFKZLJM.js";
-import {
-  MaxValidator,
-  MinValidator,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR
-} from "./chunk-KFNAQVYY.js";
+} from "./chunk-YM7LKEJH.js";
 import "./chunk-QFWXKLND.js";
 import "./chunk-C7SOZSX7.js";
 import "./chunk-L3IZ2C2F.js";
@@ -57,6 +34,29 @@ import "./chunk-4AF7KAXZ.js";
 import "./chunk-VHXHNOM7.js";
 import "./chunk-CJ5MJUPJ.js";
 import "./chunk-ZWBDDU4U.js";
+import {
+  iosTransitionAnimation
+} from "./chunk-HV7BMKCE.js";
+import {
+  bootstrapLazy,
+  componentOnReady,
+  config,
+  configFromSession,
+  configFromURL,
+  createAnimation,
+  doc,
+  getIonPageElement,
+  getMode,
+  printIonWarning,
+  saveConfig,
+  setMode
+} from "./chunk-3J4LGGM5.js";
+import {
+  MaxValidator,
+  MinValidator,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR
+} from "./chunk-KFNAQVYY.js";
 import {
   ActivatedRoute,
   Router
